@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "routeTables_HUB_RT01_name": {
+            "value": null
+        },
+        "routeTables_Sopke_RT01_name": {
+            "value": null
+        },
+        "azureFirewalls_FW_Hybrid_name": {
+            "value": null
+        },
+        "publicIPAddresses_fw_pip_name": {
+            "value": null
+        },
+        "virtualNetworks_HUB_VNET_name": {
+            "value": null
+        },
+        "connections_hub_to_onprem_name": {
+            "value": null
+        },
+        "connections_Onprem_to_HUB_name": {
+            "value": null
+        },
+        "virtualMachines_On_Prem_VM_name": {
+            "value": null
+        },
+        "virtualMachines_VM01_SPOKE_name": {
+            "value": null
+        },
+        "firewallPolicies_fw_policy_name": {
+            "value": null
+        },
+        "publicIPAddresses_fw02_pip_name": {
+            "value": null
+        },
+        "virtualNetworks_Spoke_Vnet_name": {
+            "value": null
+        },
+        "virtualNetworks_Onprem_Vnet_name": {
+            "value": null
+        },
+        "publicIPAddresses_hub_gw_pip_name": {
+            "value": null
+        },
+        "virtualNetworkGateways_GW_HUB_name": {
+            "value": null
+        },
+        "networkInterfaces_on_prem_vm665_name": {
+            "value": null
+        },
+        "networkInterfaces_vm01_spoke476_name": {
+            "value": null
+        },
+        "publicIPAddresses_onprem_gw_pip_name": {
+            "value": null
+        },
+        "publicIPAddresses_On_Prem_VM_ip_name": {
+            "value": null
+        },
+        "publicIPAddresses_VM01_SPOKE_ip_name": {
+            "value": null
+        },
+        "virtualNetworkGateways_GW_OnPrem_name": {
+            "value": null
+        },
+        "networkSecurityGroups_On_Prem_VM_nsg_name": {
+            "value": null
+        },
+        "networkSecurityGroups_VM01_SPOKE_nsg_name": {
+            "value": null
+        }
+    }
+}
