@@ -978,10 +978,6 @@
             "apiVersion": "2024-01-01",
             "name": "[parameters('virtualNetworks_HUB_VNET_name')]",
             "location": "eastus",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_HUB_RT01_name'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_Spoke_Vnet_name'))]"
-            ],
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
