@@ -443,9 +443,9 @@
                         "name": "[concat(parameters('virtualMachines_On_Prem_VM_name'), '_OsDisk_1_52bfefde4bd945b282b451b0683d7d78')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
-                        "managedDisk": {
-                            "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_On_Prem_VM_name'), '_OsDisk_1_52bfefde4bd945b282b451b0683d7d78'))]"
-                        },
+                      "managedDisk": {
+                           "storageAccountType": "Standard_LRS"
+                      },
                         "deleteOption": "Delete"
                     },
                     "dataDisks": [],
@@ -506,9 +506,9 @@
                         "name": "[concat(parameters('virtualMachines_VM01_SPOKE_name'), '_disk1_140ec77ea71e46fbad0feef06cdb5ea1')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
-                        "managedDisk": {
-                            "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_VM01_SPOKE_name'), '_disk1_140ec77ea71e46fbad0feef06cdb5ea1'))]"
-                        },
+                     "managedDisk": {
+                             "storageAccountType": "Standard_LRS"
+                     },
                         "deleteOption": "Delete"
                     },
                     "dataDisks": [],
@@ -1444,37 +1444,29 @@
                 ],
                 "applicationRuleCollections": [],
                 "natRuleCollections": [
-                    {
-                        "name": "spoke-rdp",
-                        "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_FW_Hybrid_name')), '/natRuleCollections/spoke-rdp')]",
-                        "properties": {
-                            "priority": 100,
-                            "action": {
-                                "type": "Dnat"
-                            },
-                            "rules": [
-                                {
-                                    "name": "allow-rdp",
-                                    "protocols": [
-                                        "TCP"
-                                    ],
-                                    "translatedAddress": "40.0.0.4",
-                                    "translatedPort": "3389",
-                                    "sourceAddresses": [
-                                        "*"
-                                    ],
-                                    "sourceIpGroups": [],
-                                    "destinationAddresses": [
-                                        "172.191.25.200"
-                                    ],
-                                    "destinationPorts": [
-                                        "7890"
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                ]
+    {
+        "name": "spoke-rdp",
+        "properties": {
+            "priority": 100,
+            "action": {
+                "type": "Dnat"
+            },
+            "rules": [
+                {
+                    "name": "allow-rdp",
+                    "protocols": ["TCP"],
+                    "sourceAddresses": ["*"],
+                    "destinationAddresses": [
+                        "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_fw_pip_name'))).ipAddress]"
+                    ],
+                    "destinationPorts": ["7890"],
+                    "translatedAddress": "40.0.0.4",
+                    "translatedPort": "3389"
+                }
+            ]
+        }
+    }
+]
             }
         }
     ]
